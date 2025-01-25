@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Hostel Registration Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9f7fd;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2196f3;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .data {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #f0f9ff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        li strong {
+            color: #2196f3;
+            font-weight: bold;
+        }
+
+        li span {
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .footer a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            li {
+                padding: 12px;
+            }
+
+            .footer {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            li {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Submitted Hostel Registration Data</h1>
+        <div id="output" class="data"></div>
+    </div>
+
+    <div class="footer">
+        <p>Need more information? <a href="contact.html">Contact Us</a></p>
+    </div>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const query = window.location.search.substring(1);
+            const params = new URLSearchParams(query);
+            const data = {};
+            for (const [key, value] of params) {
+                data[key] = decodeURIComponent(value.replace(/\+/g, ' '));
+            }
+            return data;
+        }
+
+        // Display form data
+        const formData = getQueryParams();
+        const outputDiv = document.getElementById("output");
+
+        if (Object.keys(formData).length > 0) {
+            let html = '<ul>';
+            for (const key in formData) {
+                html += `<li><strong>${key.replace(/([A-Z])/g, ' $1').toUpperCase()}:</strong> <span>${formData[key]}</span></li>`;
+            }
+            html += '</ul>';
+            outputDiv.innerHTML = html;
+        } else {
+            outputDiv.textContent = "No data was submitted.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="tel"], input[type="url"], select, textarea, input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 8px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="tel"]:focus, input[type="url"]:focus, select:focus, textarea:focus, input[type="file"]:focus {
+            border-color: #007bff;
+            background-color: #e6f7ff;
+            outline: none;
+        }
+
+        button {
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .terms a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        progress {
+            width: 100%;
+            height: 20px;
+        }
+
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .img-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .img-container img {
+            width: 180px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .img-container img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1dKrlkaFjbs1hvqSm6C_ApStalzSjvB_eHQ&s" alt="Hostel Registration">
+        </div>
+        <h1>Hostel Registration Form</h1>
+        <form method="post" action="display.html" enctype="multipart/form-data">
+            <!-- Form Grid Layout -->
+            <div class="form-grid">
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Email must be in the form of 'gmail.com'">
+                </div>
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required pattern="\+?[0-9]{1,4} [0-9]{3} [0-9]{3} [0-9]{3}" title="Enter phone number in the format +1 234 567 890">
+                </div>
+                <!-- Date of Check-in -->
+                <div class="form-group">
+                    <label for="checkinDate">Check-in Date</label>
+                    <input type="date" id="checkinDate" name="checkinDate" required>
+                </div>
+                <!-- Hostel Name -->
+                <div class="form-group">
+                    <label for="hostelName">Hostel Name</label>
+                    <input type="text" id="hostelName" name="hostelName" placeholder="Enter hostel name" required>
+                </div>
+                <!-- Room Type -->
+                <div class="form-group">
+                    <label for="roomType">Room Type</label>
+                    <select id="roomType" name="roomType" required>
+                        <option value="Single">Single</option>
+                        <option value="Shared">Shared</option>
+                        <option value="Double">Double</option>
+                    </select>
+                </div>
+                <!-- Emergency Contact -->
+                <div class="form-group">
+                    <label for="emergencyContact">Emergency Contact</label>
+                    <input type="tel" id="emergencyContact" name="emergencyContact" placeholder="+1 234 567 890" required pattern="\+?[0-9]{1,4} [0-9]{3} [0-9]{3} [0-9]{3}" title="Enter emergency contact number in the format +1 234 567 890">
+                </div>
+                <!-- Gender -->
+                <div class="form-group">
+                    <label>Gender</label>
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="Other">
+                    <label for="other">Other</label>
+                </div>
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="address">Permanent Address</label>
+                    <textarea id="address" name="address" rows="4" placeholder="Enter your permanent address" required></textarea>
+                </div>
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label for="fileUpload">Upload ID Proof (Max 2MB)</label>
+                    <input type="file" id="fileUpload" name="fileUpload" accept=".jpg, .jpeg, .png, .pdf" required>
+                    <small>Accepted file types: .jpg, .jpeg, .png, .pdf</small>
+                </div>
+                <!-- Terms and Conditions -->
+                <div class="form-group terms">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the <a href="#">Terms and Conditions</a>.
+                    </label>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // File size validation (Max 2MB)
+        document.getElementById('fileUpload').addEventListener('change', function() {
+            var file = this.files[0];
+            if (file && file.size > 2 * 1024 * 1024) {
+                alert("File size exceeds 2MB limit.");
+                this.value = ''; // Clear the selected file
+            }
+        });
+    </script>
+</body>
+</html>
