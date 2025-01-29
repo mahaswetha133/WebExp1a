@@ -67,6 +67,12 @@
             outline: none;
         }
 
+        .input-alert {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
         button {
             padding: 15px 25px;
             background-color: #007bff;
@@ -147,33 +153,38 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1dKrlkaFjbs1hvqSm6C_ApStalzSjvB_eHQ&s" alt="Hostel Registration">
         </div>
         <h1>Hostel Registration Form</h1>
-        <form method="post" action="display.html" enctype="multipart/form-data">
+        <form method="get" action="display.html" enctype="multipart/form-data">
             <!-- Form Grid Layout -->
             <div class="form-grid">
                 <!-- Full Name -->
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <div id="name-alert" class="input-alert"></div>
                 </div>
                 <!-- Email Address -->
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="example@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Email must be in the form of 'gmail.com'">
+                    <div id="email-alert" class="input-alert"></div>
                 </div>
                 <!-- Phone Number -->
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required pattern="\+?[0-9]{1,4} [0-9]{3} [0-9]{3} [0-9]{3}" title="Enter phone number in the format +1 234 567 890">
+                    <div id="phone-alert" class="input-alert"></div>
                 </div>
                 <!-- Date of Check-in -->
                 <div class="form-group">
                     <label for="checkinDate">Check-in Date</label>
                     <input type="date" id="checkinDate" name="checkinDate" required>
+                    <div id="checkinDate-alert" class="input-alert"></div>
                 </div>
                 <!-- Hostel Name -->
                 <div class="form-group">
                     <label for="hostelName">Hostel Name</label>
                     <input type="text" id="hostelName" name="hostelName" placeholder="Enter hostel name" required>
+                    <div id="hostelName-alert" class="input-alert"></div>
                 </div>
                 <!-- Room Type -->
                 <div class="form-group">
@@ -183,11 +194,13 @@
                         <option value="Shared">Shared</option>
                         <option value="Double">Double</option>
                     </select>
+                    <div id="roomType-alert" class="input-alert"></div>
                 </div>
                 <!-- Emergency Contact -->
                 <div class="form-group">
                     <label for="emergencyContact">Emergency Contact</label>
                     <input type="tel" id="emergencyContact" name="emergencyContact" placeholder="+1 234 567 890" required pattern="\+?[0-9]{1,4} [0-9]{3} [0-9]{3} [0-9]{3}" title="Enter emergency contact number in the format +1 234 567 890">
+                    <div id="emergencyContact-alert" class="input-alert"></div>
                 </div>
                 <!-- Gender -->
                 <div class="form-group">
@@ -198,17 +211,20 @@
                     <label for="female">Female</label>
                     <input type="radio" id="other" name="gender" value="Other">
                     <label for="other">Other</label>
+                    <div id="gender-alert" class="input-alert"></div>
                 </div>
                 <!-- Address -->
                 <div class="form-group">
                     <label for="address">Permanent Address</label>
                     <textarea id="address" name="address" rows="4" placeholder="Enter your permanent address" required></textarea>
+                    <div id="address-alert" class="input-alert"></div>
                 </div>
                 <!-- File Upload -->
                 <div class="form-group">
                     <label for="fileUpload">Upload ID Proof (Max 2MB)</label>
                     <input type="file" id="fileUpload" name="fileUpload" accept=".jpg, .jpeg, .png, .pdf" required>
                     <small>Accepted file types: .jpg, .jpeg, .png, .pdf</small>
+                    <div id="fileUpload-alert" class="input-alert"></div>
                 </div>
                 <!-- Terms and Conditions -->
                 <div class="form-group terms">
@@ -216,6 +232,7 @@
                         <input type="checkbox" id="terms" name="terms" required>
                         I agree to the <a href="#">Terms and Conditions</a>.
                     </label>
+                    <div id="terms-alert" class="input-alert"></div>
                 </div>
             </div>
             <!-- Submit Button -->
@@ -224,13 +241,65 @@
     </div>
 
     <script>
-        // File size validation (Max 2MB)
+        // Full Name Alert
+        document.getElementById('name').addEventListener('input', function() {
+            document.getElementById('name-alert').textContent = "Full Name has been entered: " + this.value;
+        });
+
+        // Email Address Alert
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('email-alert').textContent = "Email Address has been entered: " + this.value;
+        });
+
+        // Phone Number Alert
+        document.getElementById('phone').addEventListener('input', function() {
+            document.getElementById('phone-alert').textContent = "Phone Number has been entered: " + this.value;
+        });
+
+        // Date of Check-in Alert
+        document.getElementById('checkinDate').addEventListener('input', function() {
+            document.getElementById('checkinDate-alert').textContent = "Check-in Date has been selected: " + this.value;
+        });
+
+        // Hostel Name Alert
+        document.getElementById('hostelName').addEventListener('input', function() {
+            document.getElementById('hostelName-alert').textContent = "Hostel Name has been entered: " + this.value;
+        });
+
+        // Room Type Alert
+        document.getElementById('roomType').addEventListener('change', function() {
+            document.getElementById('roomType-alert').textContent = "Room Type has been selected: " + this.value;
+        });
+
+        // Emergency Contact Alert
+        document.getElementById('emergencyContact').addEventListener('input', function() {
+            document.getElementById('emergencyContact-alert').textContent = "Emergency Contact has been entered: " + this.value;
+        });
+
+        // Gender Alert
+        document.getElementById('male').addEventListener('change', function() {
+            document.getElementById('gender-alert').textContent = "Gender has been selected: Male";
+        });
+        document.getElementById('female').addEventListener('change', function() {
+            document.getElementById('gender-alert').textContent = "Gender has been selected: Female";
+        });
+        document.getElementById('other').addEventListener('change', function() {
+            document.getElementById('gender-alert').textContent = "Gender has been selected: Other";
+        });
+
+        // Address Alert
+        document.getElementById('address').addEventListener('input', function() {
+            document.getElementById('address-alert').textContent = "Address has been entered: " + this.value;
+        });
+
+        // File Upload Alert
         document.getElementById('fileUpload').addEventListener('change', function() {
-            var file = this.files[0];
-            if (file && file.size > 2 * 1024 * 1024) {
-                alert("File size exceeds 2MB limit.");
-                this.value = ''; // Clear the selected file
-            }
+            document.getElementById('fileUpload-alert').textContent = "File has been uploaded.";
+        });
+
+        // Terms Alert
+        document.getElementById('terms').addEventListener('change', function() {
+            document.getElementById('terms-alert').textContent = this.checked ? "You have agreed to the Terms and Conditions." : "You must agree to the Terms and Conditions.";
         });
     </script>
 </body>
